@@ -7,19 +7,21 @@
     <link rel="icon" type=image/png" href="icon/sakura.png">
 </head>
 <body>
+<form name="register-form" action="signup.php" method="post">    
     <h3>Register user <form action=""><br>
     <label>Firstname:</label><br>
-    <input type="text"><br><br>
+    <input type="text" name="fname" required><br><br>
     <label>Lastname:</label><br>
-    <input type="text"><br><br>
+    <input type="text" name="lname" required><br><br>
     <label>Identificaction number:</label><br>
-    <input type="text"><br><br>
+    <input type="text" name="idnumber" required><br><br>
     <label>Mobile phone:</label><br>
-    <input type="text"><br><br>
+    <input type="text" name="mphone" required><br><br>
     <label>Email:</label><br>
-    <input type="text"><br><br>
+    <input type="email" name="email" required><br><br>
     <label>Passsword:</label><br>
-    <input type="text"><br><br>
+    <input type="password" name="pswd" required><br><br>
     <button>Register</button>
+</form>
 </body>
 </html>
