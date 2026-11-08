@@ -1,3 +1,4 @@
+--Create users table
 CREATE TABLE users (
     id            BIGSERIAL     PRIMARY KEY,
     firstname     VARCHAR(100)  NOT NULL,
@@ -13,3 +14,9 @@ CREATE TABLE users (
     updated_at    TIMESTAMPTZ   NOT NULL DEFAULT NOW(),
     deleted_at    TIMESTAMPTZ
 );
+
+--Select alls users from users table
+SELECT * FORM users;
+
+--Insert a new user into users table
+INSERT INTO users (firstname, lastname, ident_number, email, password) VALUES (‘Joan’, ‘Ayala’, ‘56890988’, ‘joan@mail.com’, ‘123456’);
