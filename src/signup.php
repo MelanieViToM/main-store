@@ -9,6 +9,7 @@ require('../settings/database.php');
     $mobile_phone = $_POST['mphone'];
     $email = $_POST['email'];
     $password = MD5($_POST['pswd']);
+    $PHOTO_URL = 'photos/photo_default.png';
 
 $sql_check_email = "SELECT * FROM users WHERE email = '$email' ";
 $res = pg_query($local_conn, $sql_check_email);
@@ -16,14 +17,15 @@ $total = pg_num_rows($res);
 if ($total < 1){
     //Prepare query
     $sql = "INSERT INTO users
-            (firstname, lastname, mobile_phone, ident_number, email, password)
+            (firstname, lastname, ident_number, mobile_phone, email, password, url_photo)
         values(
             '$first_name',
             '$last_name',
             '$ident_number',
             '$mobile_phone',
             '$email',
-            '$password'
+            '$password',
+            '$PHOTO_URL'
             );
         ";
     
