@@ -3,7 +3,7 @@
     Use this URL to print data in browser:
     http://localhost/main-store/src/list_users.php
     */
-    require('../settings/database.php');
+    include('../settings/database.php');
 
     //Get data from users table
     $sql="
@@ -12,6 +12,7 @@
             firstname || ' ' || lastname as fullname,
             email,
             mobile_phone,
+            status,
             case when status = true then 'Active' else 'Inactive' end as status,
             url_photo
         from
@@ -31,14 +32,16 @@
     </head>
     <body>
         <table class="table table-striped">
-            <tr>
-                <th>Photo</th>
-                <th>Fullname</th>
-                <th>Email</th>
-                <th>Mobile phone</th>
-                <th>Status</th>
-                <th>Options</th>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Photo</th>
+                    <th>Fullname</th>
+                    <th>Email</th>
+                    <th>Mobile phone</th>
+                    <th>Status</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
             <?php while($row= pg_fetch_assoc($res)) { ?>
                 <tr>
                     <!-- Here print data from database -->
@@ -50,13 +53,18 @@
                     <td><?= $row['mobile_phone'] ?></td>
                     <td><?= $row['status'] ?></td>
                     <td>
-                        <a href = "#">
+                        <a href = "edit_user.php?id=<?=$row['id']?>">
                             <img src ="icons/edit.png" alt="Edit user" width="20">
                         </a>
                         <a href = "#">
                             <img src ="icons/search.png" alt="Search user" width="20">
                         </a>
+<<<<<<< HEAD
                         <a href = "delete_user.php?userID=<?= $row['id'] ?>">
+=======
+                        <a href = "delete_user.php?userID=<?= $row['id']?>"
+                            onclick="return confirm('¿Are you sure you want to delete to <?= htmlspecialchars($row['fullname'], ENT_QUOTES) ?>?');">
+>>>>>>> Feature/update-user
                             <img src ="icons/delete.png" alt="Delete user" width="20">
                         </a>
                     </td>

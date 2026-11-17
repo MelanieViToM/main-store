@@ -19,7 +19,7 @@ if (!isset($_SESSION['user_id'])) {
 <head>
 <body>
     <center><h3>Welcome to Main Store</h3>
-    <a href="logout.php">Logout</a>
+    <button type="button" onclick="window.location.href='logout.php'">Logout</button>
     </center>
 <body>
 </html>
