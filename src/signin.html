@@ -4,17 +4,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign in</title>
+    <style>
+        /* General adjustment to prevent sizes from overflowing */
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        /* Page background and full centering */
+        body{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: rgb(255, 255, 255);
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        /* White card containing the form */
+        form{
+            background-color: rgb(238, 188, 108);
+            padding: 30px 35px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 420px;
+        }
+        /*Title form*/
+        h3{
+            text-align: center;
+            color: black;
+            font-size: 20px;
+            margin-bottom: 0px;
+        }
+        /*Labels for each field*/
+        label{
+           display: block; 
+           margin-bottom: 14px;
+           color: rgb(0, 0, 0);
+           font-size: 16px;
+           font-weight: 600;
+        }
+        /*Text box*/
+        input{
+            width: 100%;
+            padding: 10px 12px;
+            margin-bottom: 0px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 15px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        /* Effect when clicking inside a text box */
+        input:focus {
+            outline: none;
+            border-color: #000000;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+        /* Register botton */
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            background-color: #000000;
+            color:rgb(238, 188, 108);
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        /* Effect when hovering the mouse over the button */
+        button:hover {
+            background-color: #151414;
+        }
+    </style>
+
 </head>
-<body>
-    <center>
+<body>    
     <form name="register-form" action="signin.php" method="post">
         <h3>Sign in<form action=""><br><br>
-        <label>Email:</label><br>
+        <label>Email:</label>
         <input type="email" name="email" placeholder="melanievitom@mail.com" required><br><br>
-        <label>Contraseña:</label><br>
-        <input type="password" name="pswd" placeholder="********" required><br><br>
+        <label>Contraseña:</label>
+        <input type="password" name="pswd" placeholder="********" required><br><br><br>
         <button>Login</button>
     </form>
-    </center>
 </body>
 </html>

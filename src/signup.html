@@ -4,26 +4,100 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Store - Register user</title>
-    <link rel="icon" type=image/png" href="icon/sakura.png">
+    <link rel="icon" type="image/png" href="icon/sakura.png">
+    <style>
+        /* General adjustment to prevent sizes from overflowing */
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        /* Page background and full centering */
+        body{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: rgb(255, 255, 255);
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        /* White card containing the form */
+        form{
+            background-color: rgb(238, 188, 108);
+            padding: 30px 35px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 420px;
+        }
+        /*Title form*/
+        h3{
+            text-align: center;
+            color: black;
+            font-size: 20px;
+            margin-bottom: 0px;
+        }
+        /*Labels for each field*/
+        label{
+           display: block; 
+           margin-bottom: 14px;
+           color: rgb(0, 0, 0);
+           font-size: 16px;
+           font-weight: 600;
+        }
+        /*Text box*/
+        input{
+            width: 100%;
+            padding: 10px 12px;
+            margin-bottom: 0px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 15px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        /* Effect when clicking inside a text box */
+        input:focus {
+            outline: none;
+            border-color: #000000;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+        /* Register botton */
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            background-color: #000000;
+            color:rgb(238, 188, 108);
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        /* Effect when hovering the mouse over the button */
+        button:hover {
+            background-color: #151414;
+        }
+    </style>
+    
 </head>
 <body>
-    <center>
         <form name="register-form" action="signup.php" method="post">    
             <h3>Register user <form action=""><br><br>
-            <label>Firstname:</label><br>
+            <label>Firstname:</label>
             <input type="text" name="fname" required><br><br>
-            <label>Lastname:</label><br>
+            <label>Lastname:</label>
             <input type="text" name="lname" required><br><br>
-            <label>Identification number:</label><br>
+            <label>Identification number:</label>
             <input type="text" name="idnumber" required><br><br>
-            <label>Mobile phone:</label><br>
+            <label>Mobile phone:</label>
             <input type="text" name="mphone" required><br><br>
-            <label>Email:</label><br>
+            <label>Email:</label>
             <input type="email" name="email" required><br><br>
-            <label>Password:</label><br>
-            <input type="password" name="pswd" required><br><br>
+            <label>Password:</label>
+            <input type="password" name="pswd" required><br><br><br>
             <button>Register</button>
         </form>
-    </center>
 </body>
 </html>
