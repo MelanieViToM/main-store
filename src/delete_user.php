@@ -16,6 +16,6 @@ if($res){
     echo "<script>alert('User has been deleted successfully !!!')</script>";
 header('refresh:0;url=list_users.php');
 }else{
-    echo "<script>alert('User has not been deleted successfully !!!')</script>";
+    echo "<script>alert('User has not been deleted!!!')</script>";
 header('refresh:0;url=list_users.php');
 }

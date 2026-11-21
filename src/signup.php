@@ -1,5 +1,11 @@
 <?php
 //Get database connection
+    session_start();
+    // Verificar si el usuario ha iniciado sesión; si no, redirigirlo al login
+    if (!isset($_SESSION['user_id'])) {
+        header('Location: signin.html');
+        exit();
+    }
 require('../settings/database.php');
 
 //Get payload from frontend

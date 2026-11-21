@@ -4,7 +4,6 @@
     Use this URL to in browser to register a new user:
     http://localhost/main-store/src/signup.html
 */
-
 include('../settings/database.php');
 
 session_start();
