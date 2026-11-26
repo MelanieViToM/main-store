@@ -3,25 +3,44 @@
 Use this Endpoint to test request
 http://localhost/main-store/src/update_user_status.php?userID=ANY-ID-NUMBER
 */
-    include('../settings/database.php');
+session_start();
 
-    //Get data
-    $user_id = $_GET['userID'];
-    $user_status = $_GET['userStatus'];
+if (!isset($_SESSION['user_id']) || ($_SESSION['user_role'] ?? 'user') !== 'admin') {
+    header('Location: home.php');
+    exit();
+}
 
-    //Prepare query
-    if($user_status == 'Active'){
-        $new_userStatus = 'false';
-    }else{
-        $new_userStatus = 'true';
+include('../settings/database.php');
+
+$userId = filter_input(INPUT_GET, 'userID', FILTER_VALIDATE_INT);
+$userStatus = $_GET['userStatus'] ?? '';
+
+if ($userId) {
+    // Evitar que un administrador se desactive a sí mismo por accidente
+    if ((int)$userId === (int)$_SESSION['user_id']) {
+        echo "<script>alert('You cannot change your own active status.'); window.location='list_users.php';</script>";
+        exit();
     }
-    $sql_update_user_status = "UPDATE users SET status = $new_userStatus WHERE id = $user_id ";
-    $res = pg_query($local_conn, $sql_update_user_status);
 
-    if($res){
-        echo "<script>alert('User status has been updated successfully !!!')</script>";
-        header('refresh:0;url=list_users.php');
-    }else{
-        echo "<script>alert('User status has not been updated!!!')</script>";
-        header('refresh:0;url=list_users.php');
+    $newStatus = ($userStatus === 'Active') ? 'false' : 'true';
+
+    $sql = "
+        UPDATE users
+        SET status = $1, updated_at = NOW()
+        WHERE id = $2 AND deleted_at IS NULL
+    ";
+    $res = pg_query_params($local_conn, $sql, [$newStatus, $userId]);
+
+    if ($res) {
+        echo "<script>alert('User status updated successfully.'); window.location='list_users.php';</script>";
+        exit();
+    } else {
+        $err = htmlspecialchars(pg_last_error($local_conn), ENT_QUOTES);
+        echo "<script>alert('Error updating status: {$err}'); window.location='list_users.php';</script>";
+        exit();
     }
+}
+
+header('Location: list_users.php');
+exit();
+?>
